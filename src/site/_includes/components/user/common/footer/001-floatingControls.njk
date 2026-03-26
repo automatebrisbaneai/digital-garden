@@ -1,0 +1,59 @@
+<aside id="floating-control">
+    <a href="mailto:hello@croquetclaude.com" title="Contact"><i icon-name="mail" title="Contact" aria-hidden="true"></i></a>
+    <a href="/" title="Home"><i icon-name="home" title="Home" aria-hidden="true"></i></a>
+    <div class="theme-toggle-buttons">
+        <button onclick="toggleTheme('light')" title="Light mode">
+            <i icon-name="sun" aria-hidden="true"></i>
+        </button>
+        <button onclick="toggleTheme('dark')" title="Dark mode">
+            <i icon-name="moon" aria-hidden="true"></i>
+        </button>
+    </div>
+</aside>
+
+<script>
+function toggleTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+}
+// Apply saved theme on load
+(function() {
+    const saved = localStorage.getItem('theme');
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+})();
+</script>
+
+<style>
+#floating-control {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 100;
+    background: var(--background-primary);
+    border: 2px solid var(--caq-maroon);
+    border-radius: 8px;
+    padding: 0.5rem;
+    box-shadow: 4px 4px 0 var(--caq-maroon);
+}
+#floating-control a, #floating-control button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--caq-maroon);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    text-decoration: none;
+}
+#floating-control a:hover, #floating-control button:hover {
+    color: var(--caq-green);
+}
+.theme-toggle-buttons {
+    display: flex;
+    gap: 0.25rem;
+}
+</style>

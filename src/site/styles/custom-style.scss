@@ -1,13 +1,144 @@
+/* =====================================================
+   CAQ Wiki — Brand Styles
+   Design brief: resources/design-brief-caq.md
+   ===================================================== */
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lato:wght@300;400;700&display=swap');
+
+/* ── CSS Variables ── */
+:root {
+    --caq-maroon:      #73182C;
+    --caq-maroon-deep: #5E1919;
+    --caq-green:       #82b25e;
+    --caq-green-dark:  #6a9449;
+    --caq-cream:       #FCF6DA;
+    --caq-cream-dark:  #F0E8C4;
+
+    /* Override Digital Garden defaults (light mode) */
+    --background-primary:   var(--caq-cream);
+    --background-secondary: var(--caq-cream-dark);
+    --text-normal:          #2a2a2a;
+    --text-muted:           #5a5a5a;
+    --interactive-accent:   var(--caq-maroon);
+    --link-color:           var(--caq-maroon);
+    --link-color-hover:     var(--caq-green-dark);
+}
+
+/* Dark mode overrides */
+[data-theme="dark"] {
+    --background-primary:   #1a1212;
+    --background-secondary: #261818;
+    --text-normal:          #e8dfd0;
+    --text-muted:           #a89880;
+    --interactive-accent:   var(--caq-green);
+    --link-color:           var(--caq-green);
+    --link-color-hover:     #a8d080;
+}
+
 body {
-    /***
-      ADD YOUR CUSTOM STYLING HERE. (INSIDE THE body {...} section.)
-      IT WILL TAKE PRECEDENCE OVER THE STYLING IN THE STYLE.CSS FILE.
-   ***/
-    //  background-color: white;
-    //  .content {
-    //   font-size: 14px;
-    //  }
-    //  h1 {
-    //   color: black;
-    //  }
+    font-family: 'Lato', sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    background-color: var(--background-primary);
+    color: var(--text-normal);
+
+    /* ── Headings: Abril Fatface ── */
+    h1, h2, h3, h4, h5, h6,
+    .site-name,
+    .garden-title {
+        font-family: 'Abril Fatface', serif;
+        font-weight: 400;
+        color: var(--caq-maroon);
+    }
+
+    h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.6rem; border-bottom: 2px solid var(--caq-maroon); padding-bottom: 0.2rem; }
+    h3 { font-size: 1.25rem; }
+
+    /* ── Links ── */
+    a {
+        color: var(--link-color);
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.15s, color 0.15s;
+    }
+    a:hover {
+        color: var(--link-color-hover);
+        border-bottom-color: var(--link-color-hover);
+    }
+
+    /* ── Tables ── */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 1.5rem 0;
+    }
+    th {
+        background-color: var(--caq-maroon);
+        color: var(--caq-cream);
+        font-family: 'Abril Fatface', serif;
+        font-weight: 400;
+        padding: 0.6rem 0.8rem;
+        text-align: left;
+    }
+    td {
+        padding: 0.5rem 0.8rem;
+        border-bottom: 1px solid var(--caq-cream-dark);
+    }
+    tr:nth-child(even) td {
+        background-color: var(--background-secondary);
+    }
+
+    /* ── Callouts / blockquotes ── */
+    blockquote {
+        border-left: 4px solid var(--caq-green);
+        background: var(--background-secondary);
+        padding: 0.75rem 1rem;
+        margin: 1rem 0;
+        font-style: italic;
+    }
+
+    /* ── Inline code ── */
+    code {
+        background: var(--background-secondary);
+        border: 1px solid var(--caq-cream-dark);
+        border-radius: 3px;
+        padding: 0.1em 0.3em;
+        font-size: 0.9em;
+    }
+
+    /* ── Site header / nav ── */
+    .site-name, .navbar-title {
+        color: var(--caq-maroon) !important;
+        letter-spacing: 0.02em;
+    }
+
+    /* ── Content max-width ── */
+    .content {
+        max-width: 720px;
+    }
+
+    /* ── Sidebar links ── */
+    .sidebar a {
+        color: var(--text-normal);
+    }
+    .sidebar a:hover {
+        color: var(--caq-green);
+    }
+
+    /* ── Tags ── */
+    .tag {
+        background: var(--caq-maroon);
+        color: var(--caq-cream);
+        padding: 0.1rem 0.5rem;
+        border-radius: 3px;
+        font-size: 0.8em;
+        font-family: 'Lato', sans-serif;
+    }
+
+    /* ── Graph (local + global) ── */
+    .graph-icon {
+        color: var(--caq-maroon);
+    }
 }

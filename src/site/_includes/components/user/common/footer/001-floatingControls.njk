@@ -1,59 +1,72 @@
 <aside id="floating-control">
-    <a href="mailto:hello@croquetclaude.com" title="Contact"><i icon-name="mail" title="Contact" aria-hidden="true"></i></a>
-    <a href="/" title="Home"><i icon-name="home" title="Home" aria-hidden="true"></i></a>
-    <div class="theme-toggle-buttons">
-        <button onclick="toggleTheme('light')" title="Light mode">
-            <i icon-name="sun" aria-hidden="true"></i>
-        </button>
-        <button onclick="toggleTheme('dark')" title="Dark mode">
-            <i icon-name="moon" aria-hidden="true"></i>
-        </button>
-    </div>
+    <a href="https://utsob.me" target="_blank" title="Home"><i  icon-name="castle" title="Home" aria-hidden="true"></i></a>
+    <a  href="https://github.com/uroybd/topobon" title="Source Code" target="_blank"><i  icon-name="github" title="GitHub" aria-hidden="true"></i></a>
+    <span id="theme-switch">
+        <i class="svg-icon light" icon-name="sun" aria-hidden="true"></i>
+        <i class="svg-icon dark" icon-name="moon" aria-hidden="true"></i>
+        <i class="svg-icon auto" icon-name="sun-moon" aria-hidden="true"></i>
+    </span>
+    <a title="Start a Discussion" id="emailme" href="mailto:connect@utsob.me?subject=Regarding {{title}}&body=Discussing {{meta.siteBaseUrl}}{{permalink}}"><i  icon-name="mail-plus" title="Discuss" aria-hidden="true"></i></a>
 </aside>
 
+    
 <script>
-function toggleTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-}
-// Apply saved theme on load
-(function() {
-    const saved = localStorage.getItem('theme');
-    if (saved) document.documentElement.setAttribute('data-theme', saved);
-})();
-</script>
+    function setThemeIcon(theme) {
+        let toAdd;
+        switch (theme) {
+            case 'dark':
+                toRemove = ['auto', 'light'];
+                break;
+            case 'light':
+                toAdd = 'fa-adjust';
+                toRemove = ['dark', 'auto'];
+                break;
+            default:
+                toRemove = ['light', 'dark'];
+                break;
+        }
+        document.getElementById('theme-switch').classList.add(theme);
+        document.getElementById('theme-switch').classList.remove(...toRemove);
+    }
+    function setTheme(theme, setIcon) {
+        if (setIcon) {
+            setThemeIcon(theme);
+        }
+        if (theme == 'dark') {
+            document.body.classList.remove('theme-light');
+            document.body.classList.add('theme-dark');
+        } else if (theme == "light") {
+            document.body.classList.add('theme-light');
+            document.body.classList.remove('theme-dark');
+        } else {
+            theme = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+            setTheme(theme, false);
+        }
+        
+    }
+    let theme = window.localStorage.getItem('site-theme') || "light";
+    setTheme(theme, true);
+    window.theme = theme;
+    window.localStorage.setItem('site-theme', theme);
 
-<style>
-#floating-control {
-    position: fixed;
-    bottom: 1.5rem;
-    right: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    z-index: 100;
-    background: var(--background-primary);
-    border: 2px solid var(--caq-maroon);
-    border-radius: 8px;
-    padding: 0.5rem;
-    box-shadow: 4px 4px 0 var(--caq-maroon);
-}
-#floating-control a, #floating-control button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--caq-maroon);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.25rem;
-    text-decoration: none;
-}
-#floating-control a:hover, #floating-control button:hover {
-    color: var(--caq-green);
-}
-.theme-toggle-buttons {
-    display: flex;
-    gap: 0.25rem;
-}
-</style>
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(event) {
+        const settings = window.localStorage.getItem('site-theme');
+        if (!settings || settings == "auto") {
+            window.localStorage.setItem('site-theme', "auto");
+            setTheme("auto", true);
+        }
+    });
+    document.getElementById('theme-switch').addEventListener('click', function() {
+        let theme;
+        if (window.theme == 'auto') {
+            theme = "dark";
+        } else if (window.theme == 'dark') {
+            theme = 'light'
+        } else {
+            theme = 'auto';
+        }
+        setTheme(theme, true);
+        window.localStorage.setItem('site-theme', theme);
+        window.theme = theme;
+    })
+</script>

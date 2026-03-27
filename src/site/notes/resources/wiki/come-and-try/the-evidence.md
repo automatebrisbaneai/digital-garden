@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/resources/wiki/come-and-try/the-evidence/","tags":["come-and-try","wiki","evidence","advertising"]}
+{"dg-publish": true, "permalink": "/resources/wiki/come-and-try/the-evidence/", "tags": ["come-and-try", "wiki", "evidence", "advertising"], "dg-home-link": true, "dg-pass-frontmatter": true, "dg-show-backlinks": true, "dg-show-inline-title": true, "dg-show-file-tree": true, "dg-enable-search": true, "dg-show-toc": true, "dg-link-preview": true, "dg-show-tags": true}
 ---
 
 

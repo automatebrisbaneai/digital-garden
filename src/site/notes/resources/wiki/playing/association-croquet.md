@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/resources/wiki/playing/association-croquet/","tags":["association-croquet","tactics","wiki"]}
+{"dg-publish": true, "permalink": "/resources/wiki/playing/association-croquet/", "tags": ["association-croquet", "tactics", "wiki"], "dg-home-link": true, "dg-pass-frontmatter": true, "dg-show-backlinks": true, "dg-show-inline-title": true, "dg-show-file-tree": true, "dg-enable-search": true, "dg-show-toc": true, "dg-link-preview": true, "dg-show-tags": true}
 ---
 
 
